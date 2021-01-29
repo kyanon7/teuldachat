@@ -1,0 +1,52 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true,
+		"es6": true,
+		"node": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"prettier",
+    "airbnb",
+    "airbnb/hooks",
+    "prettier/react",
+    "plugin:prettier/recommended"
+	],
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"ecmaVersion": 12,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"plugins": [
+		"react"
+	],
+	"rules": {
+		// "semi": ["error", "always"],
+		// "quotes": ["warn", "double", {"avoidEscape": true}],
+		// "indent": ["error", 2],
+		// "no-unused-vars": ["warn", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
+		// "linebreak-style": ["error", "windows"],
+		"react/prefer-stateless-function": 0,
+		"react/jsx-filename-extension": 0,
+		"react/jsx-one-expression-per-line": 0,
+		"react/sort-comp": 0,
+		"react/forbid-prop-types": 0,
+		"no-class-assign": 0,
+		"no-shadow": 1,
+		"no-underscore-dangle": 0,
+		"no-unused-vars": 1,
+		"consistent-return": 1,
+		"func-names": 0,
+		"import/no-unresolved": 0,
+		"import/newline-after-import": 1,
+		"class-methods-use-this": 1,
+		"prefer-object-spread": 1,
+		"valid-typeof": 2,
+		"prettier/prettier": 1
+	}
+}
