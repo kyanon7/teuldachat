@@ -17,7 +17,13 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', 'prettier'],
+  plugins: ['react', 'html', 'pug', 'prettier'],
+  settings: {
+    'html / indent': 'tab',
+    'html / report-bad-indent': 'error',
+    'html / javascript-mime-types': ['text/javascript', 'text/jsx'], // also use script tags with a "text/jsx" type attribute
+    // 'html/javascript-mime-types': '/^text\\/(javascript|jsx)$/', // same thing
+  },
   rules: {
     'prettier/prettier': 'error',
     'react/prefer-stateless-function': 0,
