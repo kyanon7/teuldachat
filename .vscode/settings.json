@@ -2,6 +2,7 @@
     "files.eol": "\n",
     "eslint.validate": [
         "html", 
+        // "pug",
         "javascript"
     ],
     "editor.tabSize": 2,
@@ -11,8 +12,12 @@
     },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": false
+        "editor.formatOnSave": true
     },
+    // "[pug]": {
+    //     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    //     "editor.formatOnSave": true
+    // },
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true

@@ -26,6 +26,8 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'error',
+    'arrow-parens': 0,
+    'global-require': 1,
     'react/prefer-stateless-function': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'react/jsx-one-expression-per-line': 0,
