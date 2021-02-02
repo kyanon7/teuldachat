@@ -78,4 +78,4 @@ const server = app.listen(app.get('port'), () => {
 
 webSocket(server, app, sessionMiddleWare);
 
-// module.exports = app;
+module.exports = app;
