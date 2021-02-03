@@ -20,6 +20,11 @@
 }
 
 .mine div:first-child,
+.other div:first-child {
+  font-size: 12px;
+}
+
+.mine div:last-child,
 .other div:last-child {
   display: inline-block;
   border: 1px solid silver;
@@ -32,6 +37,16 @@
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+#chat-list {
+  height: 500px;
+  overflow: auto;
+  padding: 5px;
+}
+
+#chat-form {
+  text-align: right;
 }
 
 label[for='gif'],

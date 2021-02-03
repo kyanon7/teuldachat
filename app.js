@@ -6,14 +6,21 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const ColorHash = require('color-hash');
 require('dotenv').config();
+const cors = require('cors');
+
 const indexRouter = require('./routes');
 const connect = require('./schemas');
 const webSocket = require('./socket');
 
+const corsOptions = {
+  origin: '*',
+  credentials: true,
+};
+
 const app = express();
 connect();
 
-const sessionMiddleWare = session({
+const sessionMiddleware = session({
   resave: false,
   saveUninitialized: false,
   secret: process.env.COOKIE_SECRET,
@@ -23,31 +30,22 @@ const sessionMiddleWare = session({
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.set('port', process.env.PORT || 8005);
+app.set('port', process.env.PORT || 8000);
 
+app.use(cors({ corsOptions }));
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/gif', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
-app.use(sessionMiddleWare);
+app.use(sessionMiddleware);
 app.use(flash());
-// app.use(
-//   session({
-//     resave: false,
-//     saveUninitialized: false,
-//     secret: process.env.COOKIE_SECRET,
-//     cookie: {
-//       httpOnly: true,
-//       secure: false,
-//     },
-//   }),
-// );
 
 app.use((req, res, next) => {
   if (!req.session.color) {
-    const colorhash = new ColorHash();
-    req.session.color = colorhash.hex(req.sessionID);
+    const colorHash = new ColorHash();
+    req.session.color = colorHash.hex(req.sessionID);
   }
   next();
 });
@@ -76,6 +74,6 @@ const server = app.listen(app.get('port'), () => {
   console.log(app.get('port'), '번 포트에서 대기 중');
 });
 
-webSocket(server, app, sessionMiddleWare);
+webSocket(server, app, sessionMiddleware);
 
-module.exports = app;
+// module.exports = app;
